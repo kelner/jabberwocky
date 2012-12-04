@@ -1,4 +1,12 @@
-jabberwocky
-===========
-test test 1 2 3
-project incoming bery bery soon!!
+
+MEMO (alfa)
+
+Co brakuje:
+
+- systemu punktacji
+- tablicy wyników (ranking)
+- oprawy graficznej (m.in. tłó główne)
+- możliwości zmiany zestawu obrazków
+
+
+ 
