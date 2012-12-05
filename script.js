@@ -41,6 +41,7 @@ var pole = []; // tablica
 
 // inicjuj pola
 function inicjuj_pola() {
+    // 25 elementów - max możliwych 
     for(var i = 0; i < 25; i++) {
         pole[i] = { obr: 0, stan: ZAKR };
     }
