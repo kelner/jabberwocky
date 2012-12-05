@@ -8,26 +8,26 @@
 	<script type="text/javascript" src="script.js"></script>
 </head>
 
-<body>
-	
+<body onload="resetuj();">
+
 
 <!-- WYSWIETL TABLICE -->
 
 <div id="ramka">
-	
+
 </div>
 
 
 <div id="menu">
-	Opcje <br /><br />	
+	Opcje <br /><br />
 	<div class="inputB">3X4<input type="button" value="12" onclick="genTab(3,4)"></input></div>
 	<div class="inputB">4X4<input type="button" value="16" onclick="genTab(4,4)"></input></div>
 	<div class="inputB">4X5<input type="button" value="20" onclick="genTab(4,5)"></input></div>
 	<div class="inputB">4X6<input type="button" value="24" onclick="genTab(6,4)"></input></div>
-	<div class="inputB">---- EXTRASY ---</div>	
+	<div class="inputB">---- EXTRASY ---</div>
 	<div class="inputB">3X5<input type="button" value="15" onclick="genTab(3,5)"></input></div>
 	<div class="inputB">5X5<input type="button" value="25" onclick="genTab(5,5)"></input></div>
-	<button id="resetuj" onclick="ustaw()">RESTART</button>
+	<button id="resetuj" onclick="resetuj()">RESTART</button>
 </div>
 <div id="ramCzas">CZAS: <div id="czas"></div></div>
 
