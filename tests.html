@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Testy naszego kodu</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.10.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
+
+  <!-- załaduj nasz kod źródłowy żeby było co testować -->
+  <script src="script.js"></script>
+
+  <!-- zdefiniuj testy -->
+  <script>
+    test( "test długości tablicy z obrazkami", function() {
+      var obrazki = inicjuj_obrazki();
+      equal( obrazki.length, 15, "zła długość tablicy, powinno być 15 " );
+    });
+  </script>
+</body>
+</html>
