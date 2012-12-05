@@ -26,18 +26,7 @@ body		{
 			background-color: yellow;
 			background-position: center center;			
 	}
-	
-#testowy {
-			position: absolute;
-			right: 50px;
-			top: 20px;
-			width: 370px;
-			height: 500px;
-			border: 1px solid yellow;	
-			background-color: pink;
-			color: black;
-			overflow: scroll;	
-	}
+
 	
 #resetuj	{
 			display: block;	
