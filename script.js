@@ -9,26 +9,11 @@ tem[1] = 0;
 tem[2] = 0;
 var koniec_testu = true;
 var flips = 0; //licznik prob 
-var kat = "images/flowers/";// katalog z obrazkami
-var p = 0;// licznik odkrytych pojedynczych pol
-var obrazek = [];
-obrazek[1] = kat + "1.jpeg";
-obrazek[2] = kat + "2.jpeg";
-obrazek[3] = kat + "3.jpeg";
-obrazek[4] = kat + "4.jpeg";
-obrazek[5] = kat + "5.jpeg";
-obrazek[6] = kat + "6.jpeg";
-obrazek[7] = kat + "7.jpeg";
-obrazek[8] = kat + "8.jpeg";
-obrazek[9] = kat + "9.jpeg";
-obrazek[10] = kat + "10.jpeg";
-obrazek[11] = kat + "11.jpeg";
-obrazek[12] = kat + "12.jpeg";
-obrazek[13] = kat + "13.jpeg";
-obrazek[14] = kat + "14.jpeg";
-// zestaw obrazków
 
-obrazek[0] = "images/baobab.png";
+var p = 0;// licznik odkrytych pojedynczych pol
+
+// tablica z obrazkami
+var obrazek = inicjuj_obrazki();
 
 // zmienne przechowujące czas
 var start_time, end_time;
@@ -47,6 +32,21 @@ function inicjuj_pola() {
     }
 }
 
+/**
+ * inicjuje obrazki.
+ * @return tablica z zainicjowanymi obrazkami.
+ */
+function inicjuj_obrazki() {
+    var obrazek = [];
+    var obrazki_katalog = "images/";
+    var kat = obrazki_katalog + "flowers/";
+    obrazek[0] = obrazki_katalog + "baobab.png";
+    for(var i = 1; i <= 14; i++) {
+        obrazek[i] = kat + i + ".jpeg";
+    }
+
+    return obrazek;
+}
 
 // generacja tablicy pól
 function genTab(lix, liy) {
