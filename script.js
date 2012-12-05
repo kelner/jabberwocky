@@ -30,34 +30,21 @@ obrazek[14] = kat + "14.jpeg";
 
 obrazek[0] = "images/baobab.png";
 
-var start, end;
+// zmienne przechowujące czas
+var start_time, end_time;
+
+// stałe definiujące czy karta jest zakryta czy odkryta
+var ZAKR = "zakryty", ODKR = "odkryty";
+
 // USTAW OBRAZKI
 var pole = []; // tablica 
-pole[1] = { obr: 0, stan: "zakryty"};
-pole[2] = { obr: 0, stan: "zakryty"};
-pole[3] = { obr: 0, stan: "zakryty"};
-pole[4] = { obr: 0, stan: "zakryty"};
-pole[5] = { obr: 0, stan: "zakryty"};
-pole[6] = { obr: 0, stan: "zakryty"};
-pole[7] = { obr: 0, stan: "zakryty"};
-pole[8] = { obr: 0, stan: "zakryty"};
-pole[9] = { obr: 0, stan: "zakryty"};
-pole[10] = { obr: 0, stan: "zakryty"};
-pole[11] = { obr: 0, stan: "zakryty"};
-pole[12] = { obr: 0, stan: "zakryty"};
-pole[13] = { obr: 0, stan: "zakryty"};
-pole[14] = { obr: 0, stan: "zakryty"};
-pole[15] = { obr: 0, stan: "zakryty"};
-pole[16] = { obr: 0, stan: "zakryty"};
-pole[17] = { obr: 0, stan: "zakryty"};
-pole[18] = { obr: 0, stan: "zakryty"};
-pole[19] = { obr: 0, stan: "zakryty"};
-pole[20] = { obr: 0, stan: "zakryty"};
-pole[21] = { obr: 0, stan: "zakryty"};
-pole[22] = { obr: 0, stan: "zakryty"};
-pole[23] = { obr: 0, stan: "zakryty"};
-pole[24] = { obr: 0, stan: "zakryty"};
-pole[25] = { obr: 0, stan: "zakryty"};
+
+// inicjuj pola
+function inicjuj_pola() {
+    for(var i = 0; i < 25; i++) {
+        pole[i] = { obr: 0, stan: ZAKR };
+    }
+}
 
 
 // generacja tablicy pól
@@ -72,7 +59,7 @@ function genTab(lix, liy) {
 	
 	for (c = 1; c <= lixy; c++) {
 		pole[c].obr = sf[c-1];
-		pole[c].stan = "zakryty";		
+		pole[c].stan = ZAKR;		
 		}
 	//wyswietlanie tablicy
 	e.innerHTML = null;
@@ -123,11 +110,11 @@ function zmiana(nr) {
 		return;
 	}
 	// zmiana statusu pola jesli zakryte
-	if (pole[nr].stan !==  "zakryty") { return;
+	if (pole[nr].stan !==  ZAKR) { return;
 		} else {
 		var a = document.getElementById('p' + nr);
 		a.src = obrazek[pole[nr].obr];
-		pole[nr].stan = "odkryty";
+		pole[nr].stan = ODKR;
 		p++;
 	}
 }
@@ -143,8 +130,9 @@ function mainStart(nr) {
 }
 
 
-function ustaw() {
-	start = new Date().getTime(5);
+function resetuj() {
+        inicjuj_pola();
+	start_time = new Date().getTime(5);
 	document.getElementById("czas").innerHTML = 0;	
 	lp = 0; // wyzeruj licznik par dobrych
 	p = 0;
@@ -154,7 +142,7 @@ function ustaw() {
 	for (i = 1; i <= ft; i++) {
 		document.getElementById("p" + i).style.visibility = "visible";
 		document.getElementById("p" + i).src = obrazek[0];
-		pole[i].stan = "zakryty";
+		pole[i].stan = ZAKR;
 	}
 }
 
@@ -166,28 +154,32 @@ function testMatrycy() {
 	if (!Number(ft)) { alert("ft error"); }
 	//szukanie odkrytych par - sprawdzanie czy dokladnie dwa pola sa odkryte 	
 	for (li = 1; li <= ft; li++) {
-		if (pole[li].stan === "odkryty") {
+		if (pole[li].stan === ODKR) {
 			tem[++b] = li;
 		}
 	}
 	// test zgodnosci odkrytych pol
 	if (pole[tem[1]].obr === pole[tem[2]].obr) {
 		document.getElementById("p" + tem[1]).style.visibility = "hidden";
-		pole[tem[1]].stan = "zakryty";
+		pole[tem[1]].stan = ZAKR;
 		document.getElementById("p" + tem[2]).style.visibility = "hidden";
-		pole[tem[2]].stan = "zakryty";
+		pole[tem[2]].stan = ZAKR;
 		lp++;
 	} else {
 		document.getElementById("p" + tem[1]).src = obrazek[0];
-		pole[tem[1]].stan = "zakryty";
+		pole[tem[1]].stan = ZAKR;
 		document.getElementById("p" + tem[2]).src = obrazek[0];
-		pole[tem[2]].stan = "zakryty";
+		pole[tem[2]].stan = ZAKR;
 	}
 	tem[1] = 0;
 	tem[2] = 0;
 	p = 0;
 	koniec_testu = true;
-	if (lp === Math.floor(ft/2)) { end = new Date().getTime(5); document.getElementById("czas").innerHTML = Math.floor((end-start)/1000) + " SEKUND";
-		alert("Wynik: "+flips); }
+	if (lp === Math.floor(ft/2)) {
+            end_time = new Date().getTime(5);
+            document.getElementById("czas").innerHTML =
+                Math.floor((end_time - start_time)/1000) + " SEKUND";
+            alert("Wynik: "+flips);
+        }
 	
 }
